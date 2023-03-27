@@ -22,3 +22,13 @@ func TestSubtract(t *testing.T) {
 		t.Errorf("result %d, expected %d", result, expected)
 	}
 }
+
+func TestMultiply(t *testing.T) {
+	t.Log("TestMultiply")
+	result := Multiply(10, 10)
+	expected := 100
+
+	if result != expected {
+		t.Errorf("result %d, expected %d", result, expected)
+	}
+}
