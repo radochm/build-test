@@ -10,3 +10,13 @@ presubmits:
         args:
         - -c
         - "go test"
+  - name: show-surroundings
+    decorate: true
+    always_run: true
+    spec:
+      containers:
+      - image: golang:1.12.5
+        command:
+        - /bin/ls
+        args:
+        - -lha
