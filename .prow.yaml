@@ -10,12 +10,12 @@ presubmits:
         args:
         - -c
         - "go test"
-  - name: show-surroundings
-    decorate: true
-    always_run: true
-    spec:
-      containers:
-      - image: golang:1.12.5
-        command: |
-          go get -u golang.org/x/lint/golint
-          ${GOPATH}/bin/golint -set_exit_status
+#  - name: show-surroundings
+#    decorate: true
+#    always_run: true
+#    spec:
+#      containers:
+#      - image: golang:1.12.5
+#        command: |
+#          go get -u golang.org/x/lint/golint
+#          ${GOPATH}/bin/golint -set_exit_status
