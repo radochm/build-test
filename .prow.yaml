@@ -6,7 +6,6 @@ presubmits:
       containers:
       - image: golang:1.12.5
         command:
-        - /bin/bash
+        - make
         args:
-        - -c
-        - "go test"
+        - test
