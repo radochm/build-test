@@ -52,10 +52,10 @@ postsubmits:
         args:
         - --context=/home/prow/go/src/github.com/radochm/build-test
         - --dockerfile=Dockerfile
-        - --destination=radoslawc/nmath
+        - --destination=radoslawc/nmath:1
         volumeMounts:
           - name: docker-config
-            mountPath: /kaniko/.docker
+            mountPath: /kaniko/.docker/
         resources:
           requests:
             cpu: 2
