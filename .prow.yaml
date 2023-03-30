@@ -9,3 +9,30 @@ presubmits:
         - make
         args:
         - test
+postsubmits:
+  - name: nmath-docker-image
+    decorate: true
+    decoration_config:
+      censor_secrets: true
+    always_run: true
+    spec:
+      containers:
+      - image: docker:latest
+        command:
+        - "/bin/sh"
+        - "-c"
+        - |
+          docker build -t radoslawc/nmath-test:latest .
+          docker login -u $(echo $DOCKER_USERNAME) -p $(echo $DOCKER_PASSWORD)
+          docker push radoslawc/nmath-test:latest
+        env:
+          - name: DOCKER_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: dockerhub-creds
+                key: username
+          - name: DOCKER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: dockerhub-creds
+                key: password
