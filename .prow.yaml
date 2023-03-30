@@ -32,5 +32,40 @@ postsubmits:
         - --no-push
         resources:
           requests:
-            cpu: 6
-            memory: 9Gi
+            cpu: 2
+            memory: 2Gi
+  - name: push-image
+    cluster: default
+    always_run: true
+    skip_branches:
+    annotations:
+      description: Push image to DockerHub
+    decorate: true
+    decoration_config:
+      censor_secrets: true
+    spec:
+      containers:
+      - name: kaniko
+        image: gcr.io/kaniko-project/executor:v1.9.2
+        command:
+        - /kaniko/executor
+        args:
+        - --context=/home/prow/go/src/github.com/radochm/build-test
+        - --dockerfile=Dockerfile
+        - --destination=radoslawc/nmath
+        volumeMounts:
+          - name: docker-config
+            mountPath: /kaniko/.docker
+        resources:
+          requests:
+            cpu: 2
+            memory: 2Gi
+      volumes:
+      - name: docker-config
+        projected:
+          sources:
+          - secret:
+            name: regcred
+            items:
+              - key: .dockerconfigjson
+                path: config.json
