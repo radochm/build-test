@@ -54,7 +54,7 @@ postsubmits:
         - --dockerfile=Dockerfile
         - --destination=radoslawc/nmath:1
         volumeMounts:
-          - name: docker-config
+          - name: kaniko-secret
             mountPath: /kaniko/.docker/
         resources:
           requests:
