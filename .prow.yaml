@@ -61,6 +61,9 @@ postsubmits:
             cpu: 2
             memory: 2Gi
       volumes:
-      - name: docker-config
-        secret:
-          name: conf
+        - name: kaniko-secret
+          secret:
+            secretName: regcred
+            items:
+              - key: .dockerconfigjson
+                path: config.json
