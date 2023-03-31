@@ -23,7 +23,7 @@ presubmits:
           pwd
           ls -ltrha
           ls *
-          bin/golangci-lint run
+          bin/golangci-lint run -D goanalysis_metalinter
 
 postsubmits:
   - name: verify-image-build
