@@ -23,6 +23,7 @@ postsubmits:
     decorate: true
     decoration_config:
       censor_secrets: true
+    max_concurrency: 1
     spec:
       containers:
       - name: kaniko
@@ -47,6 +48,7 @@ postsubmits:
     decorate: true
     decoration_config:
       censor_secrets: true
+    max_concurrency: 1
     spec:
       containers:
       - name: kaniko
