@@ -23,6 +23,7 @@ presubmits:
           pwd
           ls -ltrha
           ls *
+          golangci-lint run
 
 postsubmits:
   - name: verify-image-build
