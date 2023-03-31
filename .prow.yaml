@@ -15,7 +15,7 @@ postsubmits:
     cluster: default
     branches:
     - ^master$
-    always_run: true
+    always_run: false
     skip_branches:
     annotations:
       description: Verify image build on pull requests to main branch
