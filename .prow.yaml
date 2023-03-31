@@ -23,7 +23,7 @@ presubmits:
           pwd
           ls -ltrha
           ls *
-          bin/golangci-lint run --disable-all -E errcheck
+          bin/golangci-lint run --disable-all -E errcheck -v
 
 postsubmits:
   - name: verify-image-build
