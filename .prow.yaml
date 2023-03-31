@@ -14,7 +14,7 @@ postsubmits:
   - name: verify-image-build
     cluster: default
     branches:
-    - ^master$
+    - master
     always_run: false
     run_if_changed: "(\\.go|^Makefile)$"
     skip_branches:
@@ -40,8 +40,8 @@ postsubmits:
   - name: push-image
     cluster: default
     always_run: false
+    run_if_changed: "^VERSION$"
     skip_branches:
-    - ^master$
     annotations:
       description: Push image to DockerHub
     decorate: true
