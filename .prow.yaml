@@ -13,6 +13,8 @@ presubmits:
 postsubmits:
   - name: verify-image-build
     cluster: default
+    branches:
+    - ^v[0-9].*$
     always_run: true
     skip_branches:
     annotations:
@@ -36,8 +38,9 @@ postsubmits:
             memory: 2Gi
   - name: push-image
     cluster: default
-    always_run: true
+    always_run: false
     skip_branches:
+    - ^master$
     annotations:
       description: Push image to DockerHub
     decorate: true
