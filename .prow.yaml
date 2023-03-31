@@ -39,7 +39,7 @@ postsubmits:
             memory: 2Gi
   - name: push-image
     cluster: default
-    always_run: true
+    always_run: false
     skip_branches:
     - ^master$
     annotations:
