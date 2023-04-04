@@ -1,7 +1,7 @@
 presubmits:
   - name: nmath-test
     decorate: true
-    always_run: true
+    run_if_changed: "(\\.go)$"
     spec:
       containers:
       - image: golang:1.20.2
@@ -11,7 +11,7 @@ presubmits:
         - test
   - name: nmath-test-fmt
     decorate: true
-    always_run: true
+    run_if_changed: "(\\.go)$"
     spec:
       containers:
       - image: golang:1.20.2
@@ -21,7 +21,7 @@ presubmits:
         - fmt
   - name: nmath-test-vet
     decorate: true
-    always_run: true
+    run_if_changed: "(\\.go)$"
     spec:
       containers:
       - image: golang:1.20.2
@@ -31,7 +31,7 @@ presubmits:
         - vet
   - name: nmath-lint
     decorate: true
-    always_run: true
+    run_if_changed: "(\\.go)$"
     spec:
       containers:
       - image: golang:1.20.2
