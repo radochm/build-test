@@ -86,44 +86,7 @@ postsubmits:
           requests:
             cpu: 2
             memory: 2Gi
-  - name: push-image-test
-    cluster: default
-    always_run: false
-    run_if_changed: "^VERSION$"
-    skip_branches:
-    annotations:
-      description: Push image to DockerHub
-    decorate: true
-    decoration_config:
-      censor_secrets: true
-    max_concurrency: 1
-    spec:
-      containers:
-      - name: kaniko
-        image: gcr.io/kaniko-project/executor:v1.9.2
-        command:
-        - "/bin/sh"
-        args:
-        - "-c"
-        - |
-          env
-          export
-          mount
-          ls /kaniko/*
-        volumeMounts:
-          - name: kaniko-secret
-            mountPath: /kaniko/.docker/
-        resources:
-          requests:
-            cpu: 2
-            memory: 2Gi
-      volumes:
-        - name: kaniko-secret
-          secret:
-            secretName: regcred
-            items:
-              - key: .dockerconfigjson
-                path: config.json
+
   - name: push-image
     cluster: default
     always_run: false
@@ -145,6 +108,9 @@ postsubmits:
         - --context=/home/prow/go/src/github.com/radochm/build-test
         - --dockerfile=Dockerfile
         - --destination=radoslawc/nmath:$BUILD_ID
+        env:
+        - name: BUILD_ID
+          value: "1"
         volumeMounts:
           - name: kaniko-secret
             mountPath: /kaniko/.docker/
