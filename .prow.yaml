@@ -107,10 +107,7 @@ postsubmits:
         args:
         - --context=/home/prow/go/src/github.com/radochm/build-test
         - --dockerfile=Dockerfile
-        - --destination=radoslawc/nmath:$BUILD_ID
-        env:
-        - name: BUILD_ID
-          value: "1"
+        - --destination=radoslawc/nmath:2
         volumeMounts:
           - name: kaniko-secret
             mountPath: /kaniko/.docker/
