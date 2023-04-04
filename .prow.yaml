@@ -1,4 +1,21 @@
 presubmits:
+  - name: env-test
+    decorate: true
+    always_run: true
+    spec:
+      containers:
+      - image: golang:1.20.2
+        command:
+        - "/bin/sh"
+        args:
+        - "-c"
+        - |
+          env
+          export
+          printenv
+          pwd
+          ls
+          whoami
   - name: nmath-test
     decorate: true
     run_if_changed: "(\\.go|^Makefile)$"
