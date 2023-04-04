@@ -4,7 +4,8 @@ COPY . /build-test
 RUN apk update && \
     apk add --no-cache make
 WORKDIR /build-test
-RUN make
+RUN make clean && \
+    make
 
 FROM golang:1.20.2-alpine3.17
 
