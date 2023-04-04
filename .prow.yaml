@@ -46,8 +46,7 @@ postsubmits:
   - name: verify-image-build
     cluster: default
     branches:
-    - master
-    always_run: false
+    - main
     run_if_changed: "(\\.go|^Makefile|^Dockerfile)$"
     skip_branches:
     annotations:
