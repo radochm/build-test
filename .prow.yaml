@@ -48,7 +48,7 @@ postsubmits:
     branches:
     - master
     always_run: false
-    run_if_changed: "(\\.go|^Makefile)$"
+    run_if_changed: "(\\.go|^Makefile|^Dockerfile)$"
     skip_branches:
     annotations:
       description: Verify image build on pull requests to main branch
@@ -90,7 +90,7 @@ postsubmits:
         args:
         - --context=/home/prow/go/src/github.com/radochm/build-test
         - --dockerfile=Dockerfile
-        - --destination=radoslawc/nmath:1
+        - --destination=radoslawc/nmath:{BUILD_ID}
         volumeMounts:
           - name: kaniko-secret
             mountPath: /kaniko/.docker/
