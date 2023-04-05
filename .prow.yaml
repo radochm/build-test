@@ -18,7 +18,6 @@ presubmits:
           ls
           whoami
           export
-          w
   - name: nmath-test
     decorate: true
     run_if_changed: "(\\.go|^Makefile)$"
