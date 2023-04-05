@@ -18,7 +18,18 @@ presubmits:
           ls
           whoami
           export
-          w
+  - name: j-test
+    decorate: true
+    always_run: true
+    spec:
+      containers:
+      - image: golang:1.20.2
+        command:
+        - "/bin/sh"
+        args:
+        - "-c"
+        - |
+          env
   - name: nmath-test
     decorate: true
     run_if_changed: "(\\.go|^Makefile)$"
