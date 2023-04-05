@@ -25,13 +25,13 @@ endif
 unit: ## Run unit tests against code.
 ifeq ($(CONTAINER_RUNNABLE), 0)
 		$(CONTAINER_RUNTIME) run -it -v ${PWD}:/go/src -w /go/src docker.io/library/golang:${GO_VERSION}-alpine3.17 \
-         /bin/sh -c "go test ./... -v -coverprofile ${TEST_COVERAGE_FILE}; \
-         go tool cover -html=${TEST_COVERAGE_FILE} -o ${TEST_COVERAGE_HTML_FILE}; \
-         go tool cover -func=${TEST_COVERAGE_FILE} -o ${TEST_COVERAGE_FUNC_FILE}"
+	/bin/sh -c "go test ./... -v -coverprofile ${TEST_COVERAGE_FILE}; \
+	go tool cover -html=${TEST_COVERAGE_FILE} -o ${TEST_COVERAGE_HTML_FILE}; \
+	go tool cover -func=${TEST_COVERAGE_FILE} -o ${TEST_COVERAGE_FUNC_FILE}"
 else
-         go test ./... -v -coverprofile ${TEST_COVERAGE_FILE}
-         go tool cover -html=${TEST_COVERAGE_FILE} -o ${TEST_COVERAGE_HTML_FILE}
-         go tool cover -func=${TEST_COVERAGE_FILE} -o ${TEST_COVERAGE_FUNC_FILE}
+	go test ./... -v -coverprofile ${TEST_COVERAGE_FILE}
+	go tool cover -html=${TEST_COVERAGE_FILE} -o ${TEST_COVERAGE_HTML_FILE}
+	go tool cover -func=${TEST_COVERAGE_FILE} -o ${TEST_COVERAGE_FUNC_FILE}
 endif
 
 # Install link at https://golangci-lint.run/usage/install/ if not running inside a container
@@ -40,7 +40,7 @@ lint: ## Run lint  against code.
 ifeq ($(CONTAINER_RUNNABLE), 0)
 		$(CONTAINER_RUNTIME) run -it -v ${PWD}:/go/src -w /go/src docker.io/golangci/golangci-lint:${GOLANG_CI_VER}-alpine golangci-lint run ./... -v
 else
-         golangci-lint run ./... -v
+	golangci-lint run ./... -v
 endif
 
 # Install link at https://github.com/securego/gosec#install if not running inside a container
@@ -49,5 +49,5 @@ gosec: ## inspects source code for security problem by scanning the Go Abstract 
 ifeq ($(CONTAINER_RUNNABLE), 0)
 		$(CONTAINER_RUNTIME) run -it -v ${PWD}:/go/src -w /go/src docker.io/securego/gosec:${GOSEC_VER} ./...
 else
-         gosec ./...
+	gosec ./...
 endif
