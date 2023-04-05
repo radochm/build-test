@@ -13,6 +13,7 @@ presubmits:
           make unit
           make lint
           make gosec
+          make -version
           pwd
           ls
           whoami
@@ -27,7 +28,7 @@ presubmits:
         command:
         - make
         args:
-        - test
+        - unit
   - name: nmath-test-fmt
     decorate: true
     run_if_changed: "(\\.go)$"
@@ -37,7 +38,7 @@ presubmits:
         command:
         - make
         args:
-        - fmt
+        - lint
   - name: nmath-test-vet
     decorate: true
     run_if_changed: "(\\.go)$"
@@ -47,19 +48,7 @@ presubmits:
         command:
         - make
         args:
-        - vet
-  - name: nmath-lint
-    decorate: true
-    run_if_changed: "(\\.go)$"
-    spec:
-      containers:
-      - image: golang:1.20.2
-        command:
-        - "/bin/sh"
-        - "-c"
-        - |
-          wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.52.2
-          bin/golangci-lint run -v
+        - gosec
 
 postsubmits:
   - name: verify-image-build
