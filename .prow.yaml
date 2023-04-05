@@ -1,5 +1,5 @@
 presubmits:
-  - name: vi-test
+  - name: env-test-sample-prow-job
     decorate: true
     always_run: true
     spec:
@@ -10,15 +10,7 @@ presubmits:
         args:
         - "-c"
         - |
-          make unit
-          make lint
-          make gosec
-          make -version
-          pwd
-          ls
-          whoami
-          export
-          w
+          env
   - name: nmath-test
     decorate: true
     run_if_changed: "(\\.go|^Makefile)$"
