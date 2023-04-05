@@ -1,5 +1,5 @@
 presubmits:
-  - name: env-test
+  - name: vi-test
     decorate: true
     always_run: true
     spec:
@@ -10,9 +10,9 @@ presubmits:
         args:
         - "-c"
         - |
-          env
-          export
-          printenv
+          make unit
+          make lint
+          make gosec
           pwd
           ls
           whoami
