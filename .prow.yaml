@@ -1,23 +1,16 @@
 presubmits:
-  - name: vi-test
+  - name: env-test-sample-prow-job
     decorate: true
     always_run: true
     spec:
       containers:
-      - image: nephio/gotests:1
+      - image: golang:1.20.2
         command:
-        - "/bin/sh"
+        - &quot;/bin/sh&quot;
         args:
-        - "-c"
+        - &quot;-c&quot;
         - |
-          make unit
-          make lint
-          make gosec
-          make -version
-          pwd
-          ls
-          whoami
-          export
+          env
   - name: nmath-test
     decorate: true
     run_if_changed: "(\\.go|^Makefile)$"
