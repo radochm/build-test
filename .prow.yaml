@@ -43,9 +43,9 @@ postsubmits:
     cluster: default
     run_if_changed: "^VERSION$"
     branches:
-    - "^v[0-9].*$"
+    - main
     annotations:
-      description: Push image to DockerHub
+      description: Build and Push Image to DockerHub
     decorate: true
     decoration_config:
       censor_secrets: true
@@ -59,7 +59,7 @@ postsubmits:
         - "-c"
         - |
           executor --context=/home/prow/go/src/github.com/radochm/build-test \
-            --dockerfile=Dockerfile --destination=radoslawc/nmath:${PULL_BASE_SHA}
+            --dockerfile=Dockerfile --destination=radoslawc/nmath:${BUILD_ID}
         volumeMounts:
           - name: kaniko-secret
             mountPath: /kaniko/.docker/
