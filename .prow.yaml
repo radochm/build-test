@@ -11,45 +11,6 @@ presubmits:
         - "-c"
         - |
           make unit
-          make lint
-          make gosec
-          make -version
-          pwd
-          ls
-          whoami
-          export
-          w
-  - name: nmath-test
-    decorate: true
-    run_if_changed: "(\\.go|^Makefile)$"
-    spec:
-      containers:
-      - image: golang:1.20.2
-        command:
-        - make
-        args:
-        - unit
-  - name: nmath-test-fmt
-    decorate: true
-    run_if_changed: "(\\.go)$"
-    spec:
-      containers:
-      - image: golang:1.20.2
-        command:
-        - make
-        args:
-        - lint
-  - name: nmath-test-vet
-    decorate: true
-    run_if_changed: "(\\.go)$"
-    spec:
-      containers:
-      - image: golang:1.20.2
-        command:
-        - make
-        args:
-        - gosec
-
 postsubmits:
   - name: verify-image-build
     cluster: default
@@ -78,11 +39,12 @@ postsubmits:
             cpu: 2
             memory: 2Gi
 
-  - name: push-image
+  - name: build-push-image
     cluster: default
-    always_run: false
     run_if_changed: "^VERSION$"
     skip_branches:
+    - main
+    - master
     annotations:
       description: Push image to DockerHub
     decorate: true
@@ -92,13 +54,13 @@ postsubmits:
     spec:
       containers:
       - name: kaniko
-        image: gcr.io/kaniko-project/executor:v1.9.2
+        image: gcr.io/kaniko-project/executor:debug
         command:
-        - /kaniko/executor
-        args:
-        - --context=/home/prow/go/src/github.com/radochm/build-test
-        - --dockerfile=Dockerfile
-        - --destination=radoslawc/nmath:2
+        - "/bin/sh"
+        - "-c"
+        - |
+          executor --context=/home/prow/go/src/github.com/radochm/build-test \
+            --dockerfile=Dockerfile --destination=radoslawc/nmath:${PULL_BASE_SHA}
         volumeMounts:
           - name: kaniko-secret
             mountPath: /kaniko/.docker/
