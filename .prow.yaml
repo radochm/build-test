@@ -58,7 +58,7 @@ postsubmits:
         - "/bin/sh"
         - "-c"
         - |
-          executor --context=/home/prow/go/src/github.com/radochm/build-test \
+          executor --context=${PWD} \
             --dockerfile=Dockerfile --destination=radoslawc/nmath:${BUILD_ID}
         volumeMounts:
           - name: kaniko-secret
