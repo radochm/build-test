@@ -70,10 +70,8 @@ postsubmits:
           export
           env
           echo $BUILD_ID
-        args:
-        - --context=/home/prow/go/src/github.com/radochm/build-test
-        - --dockerfile=Dockerfile
-        - --destination=radoslawc/nmath:2
+          executor --context=/home/prow/go/src/github.com/radochm/build-test \
+            --dockerfile=Dockerfile --destination=radoslawc/nmath:${BUILD_ID}
         volumeMounts:
           - name: kaniko-secret
             mountPath: /kaniko/.docker/
