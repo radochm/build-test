@@ -13,13 +13,6 @@ presubmits:
           make unit
           make lint
           make gosec
-          make -version
-          pwd
-          ls
-          whoami
-          export
-          w
-
 postsubmits:
   - name: verify-image-build
     cluster: default
@@ -50,9 +43,10 @@ postsubmits:
 
   - name: build-push-image
     cluster: default
-    always_run: true
-    #run_if_changed: "^VERSION$"
+    run_if_changed: "^VERSION$"
     skip_branches:
+    - main
+    - master
     annotations:
       description: Push image to DockerHub
     decorate: true
@@ -67,11 +61,8 @@ postsubmits:
         - "/bin/sh"
         - "-c"
         - |
-          export
-          env
-          echo $BUILD_ID
           executor --context=/home/prow/go/src/github.com/radochm/build-test \
-            --dockerfile=Dockerfile --destination=radoslawc/nmath:${BUILD_ID}
+            --dockerfile=Dockerfile --destination=radoslawc/nmath:${PULL_BASE_SHA}
         volumeMounts:
           - name: kaniko-secret
             mountPath: /kaniko/.docker/
