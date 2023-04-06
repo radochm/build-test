@@ -42,9 +42,8 @@ postsubmits:
   - name: build-push-image
     cluster: default
     run_if_changed: "^VERSION$"
-    skip_branches:
-    - main
-    - master
+    branches:
+    - "^v[0-9].*$"
     annotations:
       description: Push image to DockerHub
     decorate: true
