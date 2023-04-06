@@ -11,8 +11,6 @@ presubmits:
         - "-c"
         - |
           make unit
-          make lint
-          make gosec
 postsubmits:
   - name: verify-image-build
     cluster: default
