@@ -25,7 +25,7 @@ presubmits:
         - "-c"
         - |
           pwd
-          make lint
+          cd prowsubd && pwd && make lint
 
 postsubmits:
   - name: verify-image-build
