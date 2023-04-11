@@ -4,13 +4,15 @@ presubmits:
     run_if_changed: ".go"
     spec:
       containers:
-      - image: golang:1.20.2
+      - image: nephio/gotests:2
         command:
         - "/bin/sh"
         args:
         - "-c"
         - |
           make unit
+          make lint
+          make gosec
 postsubmits:
   - name: verify-image-build
     cluster: default
