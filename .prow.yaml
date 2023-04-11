@@ -13,6 +13,20 @@ presubmits:
           make unit
           make lint
           make gosec
+  - name: subd-test
+    decorate: true
+    run_if_changed: "^prowsubd/.*.go$"
+    spec:
+      containers:
+      - image: nephio/gotests:2
+        command:
+        - "/bin/sh"
+        args:
+        - "-c"
+        - |
+          pwd
+          make lint
+
 postsubmits:
   - name: verify-image-build
     cluster: default
