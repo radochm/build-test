@@ -4,5 +4,5 @@ import (
 )
 
 func main() {
-	fmt.Println("One plus two seems to be: who knows what")
+	fmt.Println("One plus two seems to be: who knows what?")
 }
