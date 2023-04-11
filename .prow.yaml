@@ -1,7 +1,7 @@
 presubmits:
   - name: vi-test
     decorate: true
-    always_run: true
+    run_if_changed: ".go"
     spec:
       containers:
       - image: golang:1.20.2
