@@ -32,7 +32,7 @@ postsubmits:
     cluster: default
     branches:
     - main
-    run_if_changed: "(\\.go|^Makefile|^Dockerfile)$"
+    run_if_changed: "^Dockerfile$"
     skip_branches:
     annotations:
       description: Verify image build on pull requests to main branch
