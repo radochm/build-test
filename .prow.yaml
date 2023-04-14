@@ -28,6 +28,8 @@ presubmits:
     spec:
       containers:
       - image: beevelop/scancode:latest
+        command:
+        - "/scancode-toolkit/scancode"
         args:
         - "-clipeu"
         - "."
