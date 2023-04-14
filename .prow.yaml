@@ -28,6 +28,7 @@ presubmits:
     spec:
       containers:
       - image: beevelop/scancode:latest
+        command:
 
   - name: subd-test
     decorate: true
