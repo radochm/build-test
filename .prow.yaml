@@ -22,7 +22,8 @@ presubmits:
         command:
         - "/go/bin/addlicense"
         args:
-        - "-c */**.go"
+        - "-check"
+        - "*/**.go"
         
   - name: subd-test
     decorate: true
