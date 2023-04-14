@@ -20,10 +20,7 @@ presubmits:
       containers:
       - image: nephio/gotests:3
         command:
-        - "/go/bin/addlicense"
-        args:
-        - "-check"
-        - "."
+        - "/usr/local/bin/checklicense.sh"
         
   - name: subd-test
     decorate: true
