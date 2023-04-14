@@ -23,7 +23,7 @@ presubmits:
         - "/go/bin/addlicense"
         args:
         - "-check"
-        - "**/*.go"
+        - "."
         
   - name: subd-test
     decorate: true
