@@ -4,7 +4,7 @@ presubmits:
     run_if_changed: "^.*.go$"
     spec:
       containers:
-      - image: nephio/gotests:2
+      - image: nephio/gotests:3
         command:
         - "/bin/sh"
         args:
@@ -18,9 +18,12 @@ presubmits:
     run_if_changed: "^.*.go$"
     spec:
       containers:
-      - image: ghcr.io/google/addlicense:v1.1.1
+      - image: nephio/gotests:3
+        command:
+        - "/go/bin/addlicense"
         args:
-        - "-c"
+        - "-c */**.go"
+        
   - name: subd-test
     decorate: true
     run_if_changed: "^prowsubd/.*.go$"
