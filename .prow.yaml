@@ -27,7 +27,7 @@ presubmits:
     run_if_changed: "^.*.go$"
     spec:
       containers:
-      - image: beevelop/scancode:latest
+      - image: nephio/scancode-toolkit:v31.2.5
         command:
         - "/scancode-toolkit/scancode"
         args:
