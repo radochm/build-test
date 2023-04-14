@@ -13,6 +13,14 @@ presubmits:
           make unit
           make lint
           make gosec
+  - name: header-test
+    decorate: true
+    run_if_changed: "^.*.go$"
+    spec:
+      containers:
+      - image: ghcr.io/google/addlicense:v1.1.1
+        args:
+        - "-c"
   - name: subd-test
     decorate: true
     run_if_changed: "^prowsubd/.*.go$"
