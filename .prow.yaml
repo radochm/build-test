@@ -4,7 +4,7 @@ presubmits:
     run_if_changed: "^.*.go$"
     spec:
       containers:
-      - image: nephio/gotests:3
+      - image: nephio/gotests:4
         command:
         - "/bin/sh"
         args:
@@ -18,7 +18,7 @@ presubmits:
     run_if_changed: "^.*.go$"
     spec:
       containers:
-      - image: nephio/gotests:3
+      - image: nephio/gotests:4
         command:
         - "/usr/local/bin/checklicense.sh"
         
@@ -27,7 +27,7 @@ presubmits:
     run_if_changed: "^prowsubd/.*.go$"
     spec:
       containers:
-      - image: nephio/gotests:2
+      - image: nephio/gotests:4
         command:
         - "/bin/sh"
         args:
