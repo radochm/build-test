@@ -21,7 +21,14 @@ presubmits:
       - image: nephio/gotests:4
         command:
         - "/usr/local/bin/checklicense.sh"
-        
+
+  - name: scancode-test
+    decorate: true
+    run_if_changed: "^.*.go$"
+    spec:
+      containers:
+      - image: beevelop/scancode:latest
+
   - name: subd-test
     decorate: true
     run_if_changed: "^prowsubd/.*.go$"
