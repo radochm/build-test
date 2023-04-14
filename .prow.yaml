@@ -28,7 +28,15 @@ presubmits:
     spec:
       containers:
       - image: beevelop/scancode:latest
-        command:
+        args:
+        - "-clipeu"
+        - "."
+        - "--json-pp"
+        - "-"
+        resources:
+          requests:
+            cpu: 8
+            memory: 8Gi
 
   - name: subd-test
     decorate: true
