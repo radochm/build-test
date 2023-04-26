@@ -27,3 +27,4 @@ RUN apk update && \
     apk add --no-cache ca-certificates && \
     chmod +x /nmath
 RUN ls
+RUN pwd
