@@ -26,3 +26,4 @@ COPY --from=builder /build-test/bin/nmath /nmath
 RUN apk update && \
     apk add --no-cache ca-certificates && \
     chmod +x /nmath
+RUN ls
