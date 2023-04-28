@@ -23,6 +23,4 @@ func main() {
 	fmt.Println("One plus two seems to be: ", a)
 	fmt.Println("committer1 ")
 	fmt.Println("committer2 ")
-	fmt.Println("committer2 ")
-	fmt.Println("committer2 ")
 }
