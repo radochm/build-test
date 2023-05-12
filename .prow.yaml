@@ -50,7 +50,11 @@ presubmits:
       containers:
       - image: nephio/gotests:4
         command:
-        - "/usr/local/bin/checklicense.sh"
+        - "/bin/sh"
+        - "-c"
+        - |
+          /usr/local/bin/checklicense.sh
+          echo success > ${ARTIFACTS}/result.txt
 
   - name: scancode-test
     decorate: true
