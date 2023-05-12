@@ -24,5 +24,6 @@ func main() {
 	fmt.Println("committer1 ")
 	fmt.Println("committer2 ")
 	fmt.Println("committer3 ")
+	fmt.Println("committer4 ")
 }
 
