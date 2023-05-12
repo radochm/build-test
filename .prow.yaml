@@ -26,7 +26,7 @@ presubmits:
         - |
           echo "------------env--------------"
           env
-          echo "------------export----------"
+          echo "------------export----------" > ${ARTIFACTS}/aaaa.txt
           export
 
   - name: vi-test
